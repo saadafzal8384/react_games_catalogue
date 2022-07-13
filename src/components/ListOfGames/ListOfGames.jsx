@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
-import Game from "../Game/Game";
+import GameCards from "../Game/GameCards";
 import { gamesOptions, fetchData } from "../../utils/fetchData";
 
 const ListOfGames = () => {
@@ -14,7 +14,7 @@ const ListOfGames = () => {
         gamesOptions
       );
       setGames(gamesData.results);
-      //   console.log(gamesData);
+      // console.log(gamesData.results);
     };
     fetchGamesData();
   }, []);
@@ -22,7 +22,7 @@ const ListOfGames = () => {
   return (
     <Grid container sx={{ margin: "0 10px" }}>
       {Array.from(games).map((game, id) => (
-        <Game game={game} key={id} />
+        <GameCards game={game} key={id} />
       ))}
     </Grid>
   );
