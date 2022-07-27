@@ -12,6 +12,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 const Game = ({ game }) => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Game = ({ game }) => {
           background: "#FFF",
           border: "1px solid #000",
         }}
+        className="card"
       >
         <CardMedia
           component="img"
