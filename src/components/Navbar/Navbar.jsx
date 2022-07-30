@@ -34,17 +34,14 @@ const Navbar = () => {
           to="/"
           style={{
             textDecoration: "none",
-            color: "#3A1212",
-            borderBottom: "3px solid #FF2625",
+            color: "#FFF",
+            borderBottom: "3px solid orange",
           }}
         >
           Home
         </Link>
-        <a
-          href="#exercises"
-          style={{ textDecoration: "none", color: "#3A1212" }}
-        >
-          Games
+        <a href="#categories" style={{ textDecoration: "none", color: "#FFF" }}>
+          Categories
         </a>
       </Stack>
     </Stack>

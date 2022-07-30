@@ -21,7 +21,16 @@ const Game = ({ game }) => {
   };
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3} sx={{ margin: "2rem 0" }}>
+    <Grid
+      item
+      xs={12}
+      sm={6}
+      md={3}
+      lg={4}
+      sx={{
+        margin: "2rem 0",
+      }}
+    >
       <Card
         sx={{
           maxWidth: 345,
