@@ -1,40 +1,18 @@
-import {
-  Avatar,
-  Box,
-  Chip,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Rating,
-  Stack,
-  Typography,
-} from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { Chip, Grid, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { gamesOptions, fetchData } from "../../utils/fetchData";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import RedditIcon from "@mui/icons-material/Reddit";
 import GradeIcon from "@mui/icons-material/Grade";
 import LanguageIcon from "@mui/icons-material/Language";
-import FolderIcon from "@mui/icons-material/Folder";
-
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
+import Platforms from "./Platforms";
+import Stores from "./Stores";
 
 const GameInformation = () => {
   const { id } = useParams();
   const [game, setGame] = useState([]);
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
 
   useEffect(() => {
     let gamesData = [];
@@ -47,7 +25,7 @@ const GameInformation = () => {
       console.log(game);
     };
     fetchGameData();
-  }, [id]);
+  }, [id, game]);
 
   return (
     <Grid container>
@@ -66,7 +44,7 @@ const GameInformation = () => {
           alt="Game Banner"
         />
       </Grid>
-      <Grid item xs={12} sm={6} md={6} lg={8}>
+      <Grid container item xs={12} md={6}>
         <Typography variant="h3" gutterBottom m={2}>
           {game?.name}
         </Typography>
@@ -151,44 +129,8 @@ const GameInformation = () => {
               />
             ))}
         </Typography>
-        <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Typography sx={{ mt: 4, mb: 2, ml: 2 }} variant="h6" component="div">
-            Available Platforms
-          </Typography>
-
-          <List dense={dense}>
-            {game?.platforms &&
-              game?.platforms.map((game, id) => (
-                <ListItem key={id}>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={game?.platform?.name} />
-                </ListItem>
-              ))}
-          </List>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Typography sx={{ mt: 4, mb: 2, ml: 2 }} variant="h6" component="div">
-            Buy Now From
-          </Typography>
-
-          <List dense={dense}>
-            {game?.stores &&
-              game?.stores.map((game, id) => (
-                <ListItem key={id}>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={game?.store?.name} />
-                </ListItem>
-              ))}
-          </List>
-        </Grid>
+        <Platforms game={game} />
+        <Stores game={game} />
       </Grid>
     </Grid>
   );
