@@ -44,7 +44,7 @@ const GameInformation = () => {
           alt="Game Banner"
         />
       </Grid>
-      <Grid container item xs={12} md={6}>
+      <Grid container item xs={12} md={6} spacing={2} mb={2}>
         <Typography variant="h3" gutterBottom m={2}>
           {game?.name}
         </Typography>

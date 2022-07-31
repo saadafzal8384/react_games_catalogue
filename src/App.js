@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import "./App.css";
 import GameInformation from "./components/GameInformation/GameInformation";
+import GamesByCategories from "./pages/GamesByCategories";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game/:id" element={<GameInformation />} />
+        <Route path="/category/:id" element={<GamesByCategories />} />
       </Routes>
     </Box>
   );

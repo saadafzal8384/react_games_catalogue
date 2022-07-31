@@ -11,10 +11,11 @@ import {
 } from "@mui/material";
 import { gamesOptions, fetchData } from "../../utils/fetchData";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     var fetchedCategories = [];
     const fetchGameCategories = async () => {
@@ -27,6 +28,10 @@ const Categories = () => {
     fetchGameCategories();
     console.log(categories);
   }, []);
+
+  const handleClick = (id) => {
+    navigate(`/category/${id}`);
+  };
 
   return (
     <Grid container sx={{ margin: "0 10px" }} id="categories">
@@ -69,7 +74,11 @@ const Categories = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button variant="contained" endIcon={<VisibilityIcon />}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleClick(category?.id)}
+                  endIcon={<VisibilityIcon />}
+                >
                   View Games
                 </Button>
               </CardActions>
